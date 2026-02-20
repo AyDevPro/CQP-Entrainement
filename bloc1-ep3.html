@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CQP Judo - Nomenclature Bloc 1 EP3</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.8rem 1.5rem;
+            color: #aaa;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #e74c3c;
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            border-bottom: 3px solid #c0392b;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '柔道';
+            position: absolute;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 8rem;
+            opacity: 0.04;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 span {
+            color: #c0392b;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #aaa;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Intro */
+        .intro {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem 2rem;
+            background: rgba(255,255,255,0.03);
+            border-left: 4px solid #c0392b;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.6;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        .intro strong {
+            color: #e74c3c;
+        }
+
+        /* Section titres */
+        .section-title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 2.5rem 0 1rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #c0392b;
+            margin: 0.5rem auto 0;
+        }
+
+        /* Tables nomenclature */
+        .table-container {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+            overflow-x: auto;
+        }
+
+        .nomenclature-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .nomenclature-table thead th {
+            background: #c0392b;
+            color: #fff;
+            padding: 0.7rem 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border: 1px solid #333;
+        }
+
+        .nomenclature-table tbody td {
+            padding: 0.5rem;
+            text-align: center;
+            border: 1px solid #2a2a4a;
+            background: rgba(255,255,255,0.02);
+            font-weight: 400;
+            transition: background 0.2s;
+        }
+
+        .nomenclature-table tbody tr:hover td {
+            background: rgba(192, 57, 43, 0.1);
+        }
+
+        .group-header {
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            background: rgba(192, 57, 43, 0.15) !important;
+            color: #e74c3c;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid #333;
+        }
+
+        /* Ne Waza + Katas côte à côte */
+        .side-by-side {
+            display: flex;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            align-items: flex-start;
+        }
+
+        .side-by-side-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .side-by-side-aside {
+            flex: 0 0 auto;
+            width: 220px;
+        }
+
+        .side-by-side .table-container {
+            max-width: none;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .side-by-side .section-title {
+            margin-top: 0;
+        }
+
+        @media (max-width: 900px) {
+            .side-by-side {
+                flex-direction: column;
+            }
+
+            .side-by-side-aside {
+                width: 100%;
+            }
+
+            .side-by-side .table-container {
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* Boutons */
+        .buttons-section {
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 900px;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            margin: 0.5rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-random {
+            background: #c0392b;
+            color: #fff;
+        }
+
+        .btn-random:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn-multi {
+            background: transparent;
+            color: #e74c3c;
+            border: 2px solid #c0392b;
+        }
+
+        .btn-multi:hover {
+            background: rgba(192, 57, 43, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
+        }
+
+        .btn-reset {
+            background: transparent;
+            color: #888;
+            border: 1px solid #555;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.5rem;
+        }
+
+        .btn-reset:hover {
+            color: #ccc;
+            border-color: #999;
+        }
+
+        /* Résultat tirage */
+        .result-area {
+            max-width: 1200px;
+            margin: 1.5rem auto 3rem;
+            padding: 0 1rem;
+        }
+
+        .result-area:empty {
+            display: none;
+        }
+
+        .result-title {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+
+        /* Tirage unique */
+        .single-draw {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .draw-card {
+            background: linear-gradient(145deg, #1e1e3a, #252550);
+            border: 1px solid #c0392b;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            animation: fadeSlide 0.4s ease-out both;
+        }
+
+        .draw-card .category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #c0392b;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .draw-card .technique {
+            font-size: 1.05rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tirage multiple table */
+        .multi-draw-table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            animation: fadeSlide 0.4s ease-out both;
+        }
+
+        .multi-draw-table thead th {
+            background: #c0392b;
+            color: #fff;
+            padding: 0.6rem 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            font-size: 0.72rem;
+            border: 1px solid #333;
+            white-space: nowrap;
+        }
+
+        .multi-draw-table tbody td {
+            padding: 0.5rem 0.5rem;
+            text-align: center;
+            border: 1px solid #2a2a4a;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .multi-draw-table tbody tr:nth-child(odd) td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .multi-draw-table tbody tr:nth-child(even) td {
+            background: rgba(255,255,255,0.04);
+        }
+
+        .multi-draw-table .row-num {
+            color: #c0392b;
+            font-weight: 700;
+            width: 30px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #555;
+            font-size: 0.75rem;
+            border-top: 1px solid #2a2a4a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header::before {
+                font-size: 5rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                max-width: 300px;
+                margin: 0.5rem auto;
+            }
+
+            .single-draw {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back -->
+    <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Accueil
+    </a>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>CQP Judo — <span>Bloc 1 Épreuve 3</span></h1>
+        <p>Nomenclature Technique &bull; Outil de tirage au sort</p>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+        Cet outil reprend la <strong>nomenclature technique du Bloc 1 — Épreuve 3</strong> du CQP.
+        Les techniques sont réparties en <strong>8 familles</strong> : 4 en Nage Waza (projections), 3 en Ne Waza (travail au sol) et 1 en Katas.
+        Utilisez les boutons ci-dessous pour tirer au sort des combinaisons de techniques afin de vous entraîner.
+    </div>
+
+    <!-- Nomenclature Nage Waza -->
+    <h2 class="section-title">Nage Waza</h2>
+    <div class="table-container">
+        <table class="nomenclature-table">
+            <thead>
+                <tr>
+                    <th>Koshi Waza</th>
+                    <th>Te Waza</th>
+                    <th>Ashi Waza</th>
+                    <th>Sutemi Waza</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Harai Goshi</td><td>Ippon Seoi Nage</td><td>De Ashi Barai</td><td>Sumi Gaeshi</td></tr>
+                <tr><td>Kubi Nage</td><td>Kata Guruma</td><td>Hiza Guruma</td><td>Tome Nage</td></tr>
+                <tr><td>Koshi Guruma</td><td>Uki Otoshi</td><td>Sasae Tsurikomi Ashi</td><td>Tani Otoshi</td></tr>
+                <tr><td>O Goshi</td><td>Tai Otoshi</td><td>Ko Soto Gari</td><td>Yoko Guruma</td></tr>
+                <tr><td>Tsurikomi Goshi</td><td>Morote Seoi Nage</td><td>Ko Uchi Gari</td><td>Soto Maki Gomi</td></tr>
+                <tr><td>Uki Goshi</td><td>Kata Eri Seoi Nage</td><td>Okuri Ashi Barai</td><td></td></tr>
+                <tr><td>Hane Goshi</td><td>Te Guruma</td><td>O Soto Gari</td><td></td></tr>
+                <tr><td>Ushiro Goshi</td><td></td><td>O Uchi Gari</td><td></td></tr>
+                <tr><td>Sode Tsurikomi Goshi</td><td></td><td>Uchi Mata</td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Ne Waza + Katas côte à côte -->
+    <div class="side-by-side">
+        <div class="side-by-side-block side-by-side-main">
+            <h2 class="section-title">Ne Waza</h2>
+            <div class="table-container">
+                <table class="nomenclature-table">
+                    <thead>
+                        <tr>
+                            <th>Osaekomi Waza</th>
+                            <th>Shime Waza</th>
+                            <th>Kansetsu Waza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Hon Gesa Gatame</td><td>Gyaku Juji Jime</td><td>Ude Hishigi Juji Gatame</td></tr>
+                        <tr><td>Kami Shio Gatame</td><td>Hadaka Jime</td><td>Ude Hishigi Ude Gatame</td></tr>
+                        <tr><td>Tate Shio Gatame</td><td>Kata Juji Jime</td><td>Ude Garami</td></tr>
+                        <tr><td>Yoko Shio Gatame</td><td>Nami Juji Jime</td><td>Ude Hishigi Waki Gatame</td></tr>
+                        <tr><td>Ushiro Gesa Gatame</td><td>Okuri Eri Jime</td><td>Ude Hishigi Hiza Gatame</td></tr>
+                        <tr><td>Kuzure Gesa Gatame</td><td>Sankaku Jime</td><td></td></tr>
+                        <tr><td>Kata Gatame</td><td>Kata Ha Jime</td><td></td></tr>
+                        <tr><td>Kuzure Tate Shio Gatame</td><td></td><td></td></tr>
+                        <tr><td>Kuzure Yoko Shio Gatame</td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="side-by-side-block side-by-side-aside">
+            <h2 class="section-title">Katas</h2>
+            <div class="table-container">
+                <table class="nomenclature-table">
+                    <thead>
+                        <tr>
+                            <th>Katas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Uki Otoshi</td></tr>
+                        <tr><td>Seoi Nage</td></tr>
+                        <tr><td>Kata Guruma</td></tr>
+                        <tr><td>Uki Goshi</td></tr>
+                        <tr><td>Harai Goshi</td></tr>
+                        <tr><td>Tsuri Komi Goshi</td></tr>
+                        <tr><td>Okuri Ashi Barai</td></tr>
+                        <tr><td>Sasae Tsuri Komi Ashi</td></tr>
+                        <tr><td>Uchi Mata</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="buttons-section">
+        <button class="btn btn-random" onclick="singleDraw()">Tirage aléatoire</button>
+        <button class="btn btn-multi" onclick="multiDraw()">Tirage multiple complet</button>
+        <br>
+        <button class="btn btn-reset" onclick="clearResult()" style="margin-top: 0.5rem;">Effacer</button>
+    </div>
+
+    <!-- Zone résultat -->
+    <div class="result-area" id="result"></div>
+
+    <!-- Footer -->
+    <div class="footer">
+        CQP Judo — Nomenclature Bloc 1 Épreuve 3
+    </div>
+
+    <script>
+        const data = {
+            "Koshi Waza": [
+                "Harai Goshi", "Kubi Nage", "Koshi Guruma", "O Goshi",
+                "Tsurikomi Goshi", "Uki Goshi", "Hane Goshi", "Ushiro Goshi",
+                "Sode Tsurikomi Goshi"
+            ],
+            "Te Waza": [
+                "Ippon Seoi Nage", "Kata Guruma", "Uki Otoshi", "Tai Otoshi",
+                "Morote Seoi Nage", "Kata Eri Seoi Nage", "Te Guruma"
+            ],
+            "Ashi Waza": [
+                "De Ashi Barai", "Hiza Guruma", "Sasae Tsurikomi Ashi",
+                "Ko Soto Gari", "Ko Uchi Gari", "Okuri Ashi Barai",
+                "O Soto Gari", "O Uchi Gari", "Uchi Mata"
+            ],
+            "Sutemi Waza": [
+                "Sumi Gaeshi", "Tome Nage", "Tani Otoshi",
+                "Yoko Guruma", "Soto Maki Gomi"
+            ],
+            "Osaekomi Waza": [
+                "Hon Gesa Gatame", "Kami Shio Gatame", "Tate Shio Gatame",
+                "Yoko Shio Gatame", "Ushiro Gesa Gatame", "Kuzure Gesa Gatame",
+                "Kata Gatame", "Kuzure Tate Shio Gatame", "Kuzure Yoko Shio Gatame"
+            ],
+            "Shime Waza": [
+                "Gyaku Juji Jime", "Hadaka Jime", "Kata Juji Jime",
+                "Nami Juji Jime", "Okuri Eri Jime", "Sankaku Jime", "Kata Ha Jime"
+            ],
+            "Kansetsu Waza": [
+                "Ude Hishigi Juji Gatame", "Ude Hishigi Ude Gatame",
+                "Ude Garami", "Ude Hishigi Waki Gatame", "Ude Hishigi Hiza Gatame"
+            ],
+            "Katas": [
+                "Uki Otoshi", "Seoi Nage", "Kata Guruma",
+                "Uki Goshi", "Harai Goshi", "Tsuri Komi Goshi",
+                "Okuri Ashi Barai", "Sasae Tsuri Komi Ashi", "Uchi Mata"
+            ]
+        };
+
+        const categories = Object.keys(data);
+
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        function singleDraw() {
+            const result = document.getElementById('result');
+            let html = '<div class="result-title">Tirage aléatoire</div>';
+            html += '<div class="single-draw">';
+
+            categories.forEach((cat, i) => {
+                const techniques = data[cat];
+                const picked = techniques[Math.floor(Math.random() * techniques.length)];
+                html += `<div class="draw-card" style="animation-delay: ${i * 0.07}s">
+                    <div class="category">${cat}</div>
+                    <div class="technique">${picked}</div>
+                </div>`;
+            });
+
+            html += '</div>';
+            result.innerHTML = html;
+            result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function multiDraw() {
+            const maxLen = Math.max(...categories.map(c => data[c].length));
+
+            // Mélanger chaque colonne
+            const shuffled = {};
+            categories.forEach(cat => {
+                shuffled[cat] = shuffle(data[cat]);
+            });
+
+            const result = document.getElementById('result');
+            let html = '<div class="result-title">Tirage multiple — ' + maxLen + ' combinaisons</div>';
+            html += '<div class="table-container">';
+            html += '<table class="multi-draw-table">';
+            html += '<thead><tr><th>#</th>';
+            categories.forEach(cat => {
+                html += `<th>${cat}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+
+            for (let i = 0; i < maxLen; i++) {
+                html += `<tr><td class="row-num">${i + 1}</td>`;
+                categories.forEach(cat => {
+                    const arr = shuffled[cat];
+                    html += `<td>${arr[i % arr.length]}</td>`;
+                });
+                html += '</tr>';
+            }
+
+            html += '</tbody></table></div>';
+            result.innerHTML = html;
+            result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function clearResult() {
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

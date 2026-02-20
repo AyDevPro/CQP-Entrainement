@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CQP Judo - Entraînement Nomenclature</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            border-bottom: 3px solid #c0392b;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '柔道';
+            position: absolute;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 10rem;
+            opacity: 0.04;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 span {
+            color: #c0392b;
+        }
+
+        .header p {
+            font-size: 1.05rem;
+            color: #aaa;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Main content */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+        }
+
+        .intro {
+            max-width: 700px;
+            text-align: center;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #bbb;
+        }
+
+        .intro strong {
+            color: #e74c3c;
+        }
+
+        /* Bloc section */
+        .bloc-section {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .bloc-title {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .bloc-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #c0392b;
+            margin: 0.5rem auto 0;
+        }
+
+        /* Cards grid */
+        .epreuves-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .epreuve-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #1e1e3a, #252550);
+            border: 2px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            text-decoration: none;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 180px;
+        }
+
+        .epreuve-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #c0392b;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .epreuve-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .epreuve-card:hover {
+            border-color: #c0392b;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.2);
+        }
+
+        .epreuve-card.active:hover {
+            cursor: pointer;
+        }
+
+        .epreuve-card.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .epreuve-card.disabled:hover {
+            transform: none;
+            border-color: #2a2a4a;
+            box-shadow: none;
+        }
+
+        .epreuve-card.disabled::before {
+            display: none;
+        }
+
+        .epreuve-card .ep-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c0392b;
+            line-height: 1;
+            margin-bottom: 0.8rem;
+        }
+
+        .epreuve-card .ep-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .epreuve-card .ep-desc {
+            font-size: 0.8rem;
+            color: #888;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .epreuve-card .ep-badge {
+            margin-top: 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .badge-ready {
+            background: rgba(192, 57, 43, 0.2);
+            color: #e74c3c;
+            border: 1px solid rgba(192, 57, 43, 0.4);
+        }
+
+        .badge-soon {
+            background: rgba(255, 255, 255, 0.05);
+            color: #666;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #555;
+            font-size: 0.75rem;
+            border-top: 1px solid #2a2a4a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header::before {
+                font-size: 6rem;
+            }
+
+            .epreuves-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .main {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>CQP <span>Judo</span></h1>
+        <p>Entraînement aux nomenclatures techniques</p>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+        <div class="intro">
+            Outil d'entraînement pour le <strong>CQP Judo</strong>.
+            Sélectionnez une épreuve pour accéder à sa nomenclature technique
+            et tirer au sort des combinaisons de techniques.
+        </div>
+
+        <div class="bloc-section">
+            <div class="bloc-title">Bloc 1</div>
+
+            <div class="epreuves-grid">
+                <!-- EP1 -->
+                <div class="epreuve-card disabled">
+                    <div class="ep-number">EP1</div>
+                    <div class="ep-title">Épreuve 1</div>
+                    <div class="ep-desc">Nomenclature technique</div>
+                    <div class="ep-badge badge-soon">Bientôt disponible</div>
+                </div>
+
+                <!-- EP2 -->
+                <div class="epreuve-card disabled">
+                    <div class="ep-number">EP2</div>
+                    <div class="ep-title">Épreuve 2</div>
+                    <div class="ep-desc">Nomenclature technique</div>
+                    <div class="ep-badge badge-soon">Bientôt disponible</div>
+                </div>
+
+                <!-- EP3 -->
+                <a href="bloc1-ep3.html" class="epreuve-card active">
+                    <div class="ep-number">EP3</div>
+                    <div class="ep-title">Épreuve 3</div>
+                    <div class="ep-desc">Nage Waza & Ne Waza — 7 familles</div>
+                    <div class="ep-badge badge-ready">Disponible</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        CQP Judo — Entraînement Nomenclature Technique
+    </div>
+
+</body>
+</html>
