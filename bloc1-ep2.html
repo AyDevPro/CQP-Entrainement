@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CQP Judo - Bloc 1 Épreuve 2</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Oswald:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.8rem 1.5rem;
+            color: #aaa;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #e74c3c;
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            border-bottom: 3px solid #c0392b;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '柔道';
+            position: absolute;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 8rem;
+            opacity: 0.04;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 span {
+            color: #c0392b;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #aaa;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Warning banner */
+        .warning {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem 1.5rem;
+            background: rgba(243, 156, 18, 0.1);
+            border-left: 4px solid #f39c12;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.6;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #f0c040;
+        }
+
+        .warning strong {
+            color: #f39c12;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Intro */
+        .intro {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            padding: 1.5rem 2rem;
+            background: rgba(255,255,255,0.03);
+            border-left: 4px solid #c0392b;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.6;
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        .intro strong {
+            color: #e74c3c;
+        }
+
+        /* Section titres */
+        .section-title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 2.5rem 0 1rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #c0392b;
+            margin: 0.5rem auto 0;
+        }
+
+        /* Liste des sujets */
+        .sujets-container {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .sujet-item {
+            display: flex;
+            gap: 1rem;
+            align-items: baseline;
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #2a2a4a;
+            transition: background 0.2s;
+        }
+
+        .sujet-item:hover {
+            background: rgba(192, 57, 43, 0.08);
+        }
+
+        .sujet-num {
+            flex: 0 0 auto;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #c0392b;
+            min-width: 28px;
+        }
+
+        .sujet-content {
+            flex: 1;
+        }
+
+        .sujet-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        .sujet-situation {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #888;
+            margin-top: 0.2rem;
+            font-style: italic;
+        }
+
+        /* Boutons */
+        .buttons-section {
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 900px;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            margin: 0.5rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-random {
+            background: #c0392b;
+            color: #fff;
+        }
+
+        .btn-random:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn-reset {
+            background: transparent;
+            color: #888;
+            border: 1px solid #555;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.5rem;
+        }
+
+        .btn-reset:hover {
+            color: #ccc;
+            border-color: #999;
+        }
+
+        /* Résultat tirage */
+        .result-area {
+            max-width: 900px;
+            margin: 1.5rem auto 3rem;
+            padding: 0 1rem;
+        }
+
+        .result-area:empty {
+            display: none;
+        }
+
+        .result-card {
+            background: linear-gradient(145deg, #1e1e3a, #252550);
+            border: 2px solid #c0392b;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            animation: fadeSlide 0.4s ease-out both;
+        }
+
+        .result-card .result-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c0392b;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .result-card .result-num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c0392b;
+            line-height: 1;
+            margin-bottom: 0.8rem;
+        }
+
+        .result-card .result-title {
+            font-size: 1.3rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-card .result-situation {
+            font-size: 1rem;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #555;
+            font-size: 0.75rem;
+            border-top: 1px solid #2a2a4a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header::before {
+                font-size: 5rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                max-width: 300px;
+                margin: 0.5rem auto;
+            }
+
+            .result-card .result-num {
+                font-size: 2rem;
+            }
+
+            .result-card .result-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back -->
+    <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Accueil
+    </a>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>CQP Judo — <span>Bloc 1 Épreuve 2</span></h1>
+        <p>Sujets d'animation &bull; Tirage au sort</p>
+    </div>
+
+    <!-- Warning -->
+    <div class="warning">
+        <strong>Attention :</strong> Les sujets ci-dessous ne sont pas les sujets officiels qui seront présentés lors de l'épreuve.
+        Ils constituent des exemples pour vous permettre de vous préparer.
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+        <strong>24 sujets d'animation</strong> sur le thème « Animation pour tous (1h) ».
+        Utilisez le bouton ci-dessous pour tirer un sujet au hasard.
+    </div>
+
+    <!-- Liste des sujets -->
+    <h2 class="section-title">Liste des sujets</h2>
+    <div class="sujets-container" id="sujets-list">
+        <div class="sujet-item"><span class="sujet-num">1</span><div class="sujet-content"><div class="sujet-title">Animation des renversements en NE WAZA</div><div class="sujet-situation">Tori sur le dos ou assis, Uke entre les jambes</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">2</span><div class="sujet-content"><div class="sujet-title">Animation des renversements en NE WAZA</div><div class="sujet-situation">Uke sur le dos ou assis, Tori entre les jambes</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">3</span><div class="sujet-content"><div class="sujet-title">Animation des renversements en NE WAZA</div><div class="sujet-situation">Uke à 4 pattes ou à plat ventre, Tori au-dessus</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">4</span><div class="sujet-content"><div class="sujet-title">Animation des renversements en NE WAZA</div><div class="sujet-situation">Tori à 4 pattes ou à plat ventre, Uke au-dessus</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">5</span><div class="sujet-content"><div class="sujet-title">Animation des immobilisations en NE WAZA</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">6</span><div class="sujet-content"><div class="sujet-title">Animation d'un dégagement de jambes</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">7</span><div class="sujet-content"><div class="sujet-title">Animation d'une technique de projection arrière</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">8</span><div class="sujet-content"><div class="sujet-title">Animation d'une technique de projection avant sur un appui</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">9</span><div class="sujet-content"><div class="sujet-title">Animation d'une technique de projection avant sur deux appuis</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">10</span><div class="sujet-content"><div class="sujet-title">Animation des techniques de projection sur l'avant, de face, sur un appui</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">11</span><div class="sujet-content"><div class="sujet-title">Animation des techniques de projection sur l'avant, de dos, sur deux appuis écartés</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">12</span><div class="sujet-content"><div class="sujet-title">Animation des techniques de projection sur l'arrière, de face, sur un appui</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">13</span><div class="sujet-content"><div class="sujet-title">Animation des techniques de projection sur l'arrière, de face, sur un appui</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">14</span><div class="sujet-content"><div class="sujet-title">Animation des principes de sorties d'immobilisation</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">15</span><div class="sujet-content"><div class="sujet-title">Animation d'une séance à base d'exercices d'application sur les procédés d'entraînement</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">16</span><div class="sujet-content"><div class="sujet-title">Animation d'un travail d'esquive</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">17</span><div class="sujet-content"><div class="sujet-title">Animation d'un travail de redoublement d'attaques</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">18</span><div class="sujet-content"><div class="sujet-title">Animation d'un travail d'enchaînement</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">19</span><div class="sujet-content"><div class="sujet-title">Animation d'une liaison debout-sol</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">20</span><div class="sujet-content"><div class="sujet-title">Animation de la mobilité en NE WAZA</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">21</span><div class="sujet-content"><div class="sujet-title">Animation du KUMIKATA en garde emboîtée</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">22</span><div class="sujet-content"><div class="sujet-title">Animation du KUMIKATA en garde opposée</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">23</span><div class="sujet-content"><div class="sujet-title">Animation de la reprise d'initiative en NE WAZA</div></div></div>
+        <div class="sujet-item"><span class="sujet-num">24</span><div class="sujet-content"><div class="sujet-title">Animation de la reprise d'initiative en TACHI WAZA</div></div></div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="buttons-section">
+        <button class="btn btn-random" onclick="randomDraw()">Tirer un sujet au sort</button>
+        <br>
+        <button class="btn btn-reset" onclick="clearResult()" style="margin-top: 0.5rem;">Effacer</button>
+    </div>
+
+    <!-- Zone résultat -->
+    <div class="result-area" id="result"></div>
+
+    <!-- Footer -->
+    <div class="footer">
+        CQP Judo — Bloc 1 Épreuve 2
+    </div>
+
+    <script>
+        const sujets = [
+            { title: "Animation des renversements en NE WAZA", situation: "Tori sur le dos ou assis, Uke entre les jambes" },
+            { title: "Animation des renversements en NE WAZA", situation: "Uke sur le dos ou assis, Tori entre les jambes" },
+            { title: "Animation des renversements en NE WAZA", situation: "Uke à 4 pattes ou à plat ventre, Tori au-dessus" },
+            { title: "Animation des renversements en NE WAZA", situation: "Tori à 4 pattes ou à plat ventre, Uke au-dessus" },
+            { title: "Animation des immobilisations en NE WAZA" },
+            { title: "Animation d'un dégagement de jambes" },
+            { title: "Animation d'une technique de projection arrière" },
+            { title: "Animation d'une technique de projection avant sur un appui" },
+            { title: "Animation d'une technique de projection avant sur deux appuis" },
+            { title: "Animation des techniques de projection sur l'avant, de face, sur un appui" },
+            { title: "Animation des techniques de projection sur l'avant, de dos, sur deux appuis écartés" },
+            { title: "Animation des techniques de projection sur l'arrière, de face, sur un appui" },
+            { title: "Animation des techniques de projection sur l'arrière, de face, sur un appui" },
+            { title: "Animation des principes de sorties d'immobilisation" },
+            { title: "Animation d'une séance à base d'exercices d'application sur les procédés d'entraînement" },
+            { title: "Animation d'un travail d'esquive" },
+            { title: "Animation d'un travail de redoublement d'attaques" },
+            { title: "Animation d'un travail d'enchaînement" },
+            { title: "Animation d'une liaison debout-sol" },
+            { title: "Animation de la mobilité en NE WAZA" },
+            { title: "Animation du KUMIKATA en garde emboîtée" },
+            { title: "Animation du KUMIKATA en garde opposée" },
+            { title: "Animation de la reprise d'initiative en NE WAZA" },
+            { title: "Animation de la reprise d'initiative en TACHI WAZA" }
+        ];
+
+        function randomDraw() {
+            const idx = Math.floor(Math.random() * sujets.length);
+            const sujet = sujets[idx];
+            const result = document.getElementById('result');
+
+            let html = '<div class="result-card">';
+            html += '<div class="result-label">Sujet tiré au sort</div>';
+            html += `<div class="result-num">Sujet ${idx + 1}</div>`;
+            html += `<div class="result-title">${sujet.title}</div>`;
+            if (sujet.situation) {
+                html += `<div class="result-situation">${sujet.situation}</div>`;
+            }
+            html += '</div>';
+
+            result.innerHTML = html;
+            result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function clearResult() {
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
